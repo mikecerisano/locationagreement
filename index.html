@@ -208,9 +208,9 @@
       text-align: center;
     }
     
-    .editable {
+    .editable { /* Keep editable for header date and signatures */
       border-bottom: 1px dotted #aaa;
-      min-width: 100px;
+      min-width: 50px; /* Reduced min-width slightly */
       display: inline-block;
     }
     
@@ -226,6 +226,9 @@
       .editable {
         border-bottom: 1px solid #000;
       }
+      #printButton {
+         display: none; /* Hide print button specifically for printing */
+       }
     }
     
     @media screen and (max-width: 480px) {
@@ -234,7 +237,7 @@
       }
       
       .editable {
-        min-width: 80px;
+        min-width: 40px; 
         max-width: 100%;
       }
       
@@ -270,20 +273,26 @@
   <script>
     function printAsPDF() {
       // Hide the print button before printing
-      document.getElementById('printButton').style.display = 'none';
+      var printButton = document.getElementById('printButton');
+       if (printButton) {
+         printButton.style.display = 'none';
+       }
       
       // Trigger print dialog
       window.print();
       
       // Show the button again after print dialog is closed
-      setTimeout(function() {
-        document.getElementById('printButton').style.display = 'block';
-      }, 1000);
+      requestAnimationFrame(function() {
+         setTimeout(function() {
+            if (printButton) {
+               printButton.style.display = 'block';
+            }
+         }, 500);
+       });
     }
   </script>
 </head>
 <body>
-  <!-- Watermark Logo -->
   <img src="https://raw.githubusercontent.com/mikecerisano/Investor/refs/heads/main/IMG_0069.png" alt="Red Fox Logo Watermark" class="watermark">
   
   <div class="container">
@@ -300,12 +309,12 @@
     <h1>LOCATION USE AGREEMENT</h1>
     
     <div class="agreement-intro">
-      THIS LOCATION USE AGREEMENT (the "Agreement") is made and entered into as of the <span class="editable" contenteditable="true">____</span> day of <span class="editable" contenteditable="true">____________</span>, <span class="editable" contenteditable="true">______</span>, by and between <strong>RED FOX FEATURES LLC</strong> ("PRODUCTION COMPANY"), and <span class="editable" contenteditable="true">Laleta</span> ("OWNER") regarding the property located at:
+      THIS LOCATION USE AGREEMENT (the "Agreement") is made and entered into as of the <span class="editable" contenteditable="true">____</span> day of <span class="editable" contenteditable="true">____________</span>, <span class="editable" contenteditable="true">______</span>, by and between <strong>RED FOX FEATURES LLC</strong> ("PRODUCTION COMPANY"), and <strong>Laleta Teajman</strong> ("OWNER") regarding the property located at:
     </div>
     
     <div class="property-section">
       <div class="property-details">
-        550 River Road, Chatham, NJ (the "LOCATION")
+        550 River Road, Chatham, NJ 07928 (the "LOCATION")
       </div>
     </div>
     
@@ -328,16 +337,10 @@
       <div class="section-content">
         <div class="subsection clearfix">
           <div class="subsection-letter">2.1</div>
-          <div class="subsection-content">The PRODUCTION COMPANY shall have access to the LOCATION from <strong>April 25, 2024 through April 27, 2024(Through the Morning of the 28th as these are overnight shoots)</strong>, for the purposes of set-up, pre-lighting, filming, insert shots, and breakdown.</div>
+          <div class="subsection-content">The PRODUCTION COMPANY shall have access to the LOCATION from <strong>3:00pm on April 25, 2025 through 3:00pm on April 28, 2025</strong>, for the purposes of set-up, pre-lighting, filming, and breakdown.</div>
         </div>
-        
-        <div class="subsection clearfix">
-          <div class="subsection-letter">2.2</div>
-          <div class="subsection-content">Access hours will remain <strong><span class="editable" contenteditable="true">[FLEXIBLE/SPECIFIC]</span></strong> during these dates, with exact timing to be coordinated with the OWNER in advance.</div>
         </div>
-      </div>
     </div>
-    
     <div class="section clearfix">
       <div class="section-number">3.</div>
       <div class="section-title">Property Preparation and Condition</div>
@@ -345,7 +348,7 @@
       <div class="section-content">
         <div class="subsection clearfix">
           <div class="subsection-letter">3.1</div>
-          <div class="subsection-content">The OWNER agrees to remove personal belongings, boxes, and any clutter from all rooms to be used for filming and rooms designated for crew and talent storage prior to the PRODUCTION COMPANY's arrival on April 25, 2024.</div>
+          <div class="subsection-content">The OWNER agrees to remove personal belongings and boxes (excluding furniture) from all rooms to be used by the PRODUCTION including the master bedroom, all bathrooms, upstairs hallway, kitchen, living room and rear sitting room prior to the PRODUCTION COMPANY's arrival on April 25, 2025.</div>
         </div>
         
         <div class="subsection clearfix">
@@ -355,7 +358,7 @@
         
         <div class="subsection clearfix">
           <div class="subsection-letter">3.3</div>
-          <div class="subsection-content">If the LOCATION is not sufficiently cleared of clutter as described in Section 3.1 upon the PRODUCTION COMPANY's arrival, and the PRODUCTION COMPANY must spend significant time (more than 2 hours) clearing or rearranging items, the PRODUCTION COMPANY may request a partial refund of up to $1,000 from the location fee to compensate for lost preparation time.</div>
+          <div class="subsection-content">If the LOCATION is not sufficiently cleared of possessions as described in Section 3.1 upon the PRODUCTION COMPANY's arrival, the PRODUCTION COMPANY may request a partial refund of up to <strong>40%</strong> of the location fee to compensate for lost preparation time.</div>
         </div>
         
         <div class="subsection clearfix">
@@ -365,11 +368,10 @@
         
         <div class="subsection clearfix">
           <div class="subsection-letter">3.5</div>
-          <div class="subsection-content">The PRODUCTION COMPANY shall be responsible for any <strong>damage caused during production</strong> and will repair or reimburse for any harm beyond normal wear and tear within <strong>7 days of completion</strong> of filming. The OWNER agrees not to hold the PRODUCTION COMPANY responsible for <strong>pre-existing conditions</strong> documented during the walk-through.</div>
+          <div class="subsection-content">The PRODUCTION COMPANY shall be responsible for any <strong>damage caused during production</strong> and will repair or reimburse for any harm beyond normal wear and tear within <strong>30 days of completion</strong> of filming. The OWNER agrees not to hold the PRODUCTION COMPANY responsible for <strong>pre-existing conditions</strong> documented during the walk-through.</div>
         </div>
       </div>
     </div>
-    
     <div class="section clearfix">
       <div class="section-number">4.</div>
       <div class="section-title">Insurance & Liability</div>
@@ -426,7 +428,7 @@
         
         <div class="subsection clearfix">
           <div class="subsection-letter">6.2</div>
-          <div class="subsection-content">Payment will be <strong><span class="editable" contenteditable="true">[PAYMENT TIMING]</span></strong> and made via <strong><span class="editable" contenteditable="true">[PAYMENT METHOD]</span></strong>. Cash payments may be delivered in person before or on the first day of the shoot to <span class="editable" contenteditable="true">[RECIPIENT NAME/TITLE]</span>.</div>
+          <div class="subsection-content">Payment will be submitted on <strong>April 25, 2025</strong> and made via <strong>check</strong>.</div>
         </div>
         
         <div class="subsection clearfix">
@@ -435,7 +437,6 @@
         </div>
       </div>
     </div>
-    
     <div class="section clearfix">
       <div class="section-number">7.</div>
       <div class="section-title">Owner's Presence & Credit</div>
@@ -494,7 +495,7 @@
         <div class="party-name">LOCATION OWNER</div>
         
         <div class="signature-line"></div>
-        <div class="signature-name">Name: <span class="editable" contenteditable="true">____________________________</span></div>
+        <div class="signature-name">Name: <span class="editable" contenteditable="true">Laleta Teajman</span></div> 
         
         <div class="date-line"></div>
         <div class="date-text">Date</div>
